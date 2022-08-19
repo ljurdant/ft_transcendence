@@ -6,3 +6,5 @@ Participants
   - bolmos-o -> https://github.com/bolmos-o
   - ljurdant -> https://github.com/ljurdant
   - lepellier -> https://github.com/lpellier
+Objectives
+----------
