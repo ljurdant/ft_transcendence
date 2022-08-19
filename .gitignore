@@ -1,0 +1,10 @@
+backend/node_modules
+backend/dist
+backend/prisma/migrations
+frontend/node_modules
+frontend/dist
+frontend_old/node_modules
+frontend_old/dist
+frontend/public/sketch
+cookie.txt
+.env

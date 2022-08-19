@@ -1,0 +1,32 @@
+import { Server } from "socket.io";
+import { Player } from "./Player";
+import { Pong } from "./Pong";
+import { GameMap } from "./GameMap";
+export declare class Game {
+    room_id: string;
+    state: string;
+    score: [number, number];
+    score_limit: number;
+    players: Player[];
+    spectators: string[];
+    pong: Pong;
+    map: GameMap;
+    frames_since_point: number;
+    publicity: string;
+    update_interval: any;
+    countdown_timeout: any;
+    invert: boolean;
+    polling: boolean;
+    constructor(room_id: any);
+    spaceAvailable(username: string): boolean;
+    kickPlayer(server: Server, id: any): void;
+    reset(): void;
+    addSpectator(id: any): void;
+    addPlayer(id: any, user: [string, string, boolean]): void;
+    setNewValue(): void;
+    increment_score(): void;
+    over(): boolean;
+    scorePoint(): string;
+    checkCollisions(server: Server): string;
+    collisionPaddle(player: Player, intersection_point: [number, number, string][], ball_point: [number, number]): number;
+}

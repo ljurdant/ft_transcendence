@@ -1,0 +1,41 @@
+services:
+
+  postgres:
+    image: postgres:alpine
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD
+
+  backend:
+    depends_on:
+      - postgres
+    image: node:lts-alpine
+    container_name: backend
+    volumes:
+      - ./backend:/backend
+    working_dir: /backend
+    ports:
+      - 3001:3001
+      - 5555:5555
+    restart: always
+    env_file:
+      - ./.env
+    command:  sh -c "npm install
+              && npx prisma db push
+              && npx prisma generate
+              && npx prisma db seed
+              && npm run start:dev"
+
+  frontend:
+    image: node:lts-alpine
+    container_name: frontend
+    volumes:
+      - ./frontend:/frontend
+    working_dir: /frontend
+    ports:
+      - 3000:3000
+    command:  sh -c "npm install
+               && npm start"
+    env_file:
+      - ./.env

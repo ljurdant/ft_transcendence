@@ -1,0 +1,125 @@
+.chat {
+	height: 73vh;
+}
+
+.message-form {
+	text-align: center;
+	/* min-height: 20px; */
+}
+
+.input {
+	width: 90%;
+	height: 3vh;
+	justify-content: center;
+	padding-left: 2%;
+	min-height: 20px;
+
+	caret-color: rgb(170, 0, 255);
+	background-color: #E8EDDF;
+
+	color: #502274;
+	border: 3px solid black;
+	outline: 1px solid black;
+	border-radius: 20px;
+	filter: drop-shadow(5px 5px 1px black)
+}
+
+.miauw-button {
+	filter: drop-shadow(8px 8px 2px black);
+	background-color: rgb(230, 90, 0);
+	border: 3px solid black;
+	border-radius: 10px;
+	padding-left: 0.8em;
+	padding-right: 0.8em;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+.miauw-button:hover {
+	background-color: rgb(250, 80, 0);
+	cursor: pointer;
+}
+
+.miauw-button:active {
+	background-color: rgb(260, 70, 0);
+	filter: drop-shadow(4px 4px 2px black);
+}
+
+.messages {
+	width: 96%;
+	list-style-type: none;
+	padding-right: 0%;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.flexwrapper {
+	display:flex;
+	flex-direction: column;
+}
+
+.current li, .current .user{
+	align-self: flex-end;
+}
+
+.current li{
+	border-radius: 0.4em 0.4em 0em 0.4em;
+}
+
+.other li, .other .user{
+	align-self: flex-start;
+}
+
+.other li{
+	border-radius: 0.4em 0.4em 0.4em 0em;
+}
+
+.message li{
+	border: solid 2px black;
+	background-color: rgba(241, 248, 238, 0.9);
+	color: rgb(30, 80, 200);
+
+	width: fit-content;
+	padding-left: 0.8em;
+	padding-right: 0.8em;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	max-width: inherit;
+	word-wrap: anywhere;
+	white-space:pre-wrap;
+}
+
+.flex {
+	display: flex;
+	flex-direction: column;
+	padding-right: 3%;
+}
+
+.user {
+	margin-top: 0%;
+	padding-right: 2%;
+	padding-top: 1%;
+	vertical-align: middle;
+}
+
+.newuser {
+	color: gray;
+	align-self: center;
+}
+
+.avatar {
+	width: 3vw;
+	border-radius: 30px;
+	padding: 1%;
+}
+
+.cat-chat {
+	margin-top: 0.5em;
+	align-self: flex-end;
+}
+
+.cat-chat-logo {
+	height: 20px;
+	width: 20px;
+}

@@ -1,0 +1,13 @@
+.chmsg {
+	width: 77%;
+	padding: 1em;
+}
+
+.chatBox {
+	display: flex;
+	flex-direction: column;
+}
+
+.channels {
+	/* width: 75%; */
+}

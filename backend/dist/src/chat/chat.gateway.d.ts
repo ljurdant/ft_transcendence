@@ -1,0 +1,37 @@
+import { Socket, Server } from "socket.io";
+import { ChatService } from './chat.service';
+import { UserRoomDto } from "./dto/user-room.dto";
+import { CreateRoomDto } from './dto/create-room.dto';
+import { CreateMessageDto } from "./dto/create-message.dto";
+import { CreateDMRoomDto } from "./dto/create-dm-room.dto";
+import { UpdatePasswordDto } from "./dto/update-password.dto";
+import { BlockedUserDto } from "./dto/blocked-user.dto";
+import { CheckPasswordDto } from "./dto/check-password.dto";
+import { AddMuteDto } from "./dto/add-mute.dto";
+export declare class ChatGateway {
+    private readonly chatService;
+    constructor(chatService: ChatService);
+    server: Server;
+    handleCreateRoom(client: Socket, createRoomDto: CreateRoomDto): Promise<void>;
+    handleCreateDMRoom(client: Socket, createDMRoomDto: CreateDMRoomDto): Promise<void>;
+    handleAddUserToRoom(addUserDto: UserRoomDto): Promise<void>;
+    handleAddAdminToRoom(addAdminDto: UserRoomDto): Promise<void>;
+    handleAddMuteToRoom(addMuteDto: AddMuteDto): Promise<void>;
+    handleGetMutedUsers(client: Socket, roomId: number): Promise<void>;
+    handleKickAdminToRoom(addAdminDto: UserRoomDto): Promise<void>;
+    handleRemoveUserFromRoom(removeUserDto: UserRoomDto): Promise<void>;
+    handleJoinRoom(client: Socket, room_id: string): void;
+    handleDisconnectFromRoom(client: Socket, room_id: string): void;
+    handleLeaveRoom(client: Socket, userRoomDto: UserRoomDto): Promise<void>;
+    handlemessage(createMessageDto: CreateMessageDto): Promise<void>;
+    handleGetRooms(client: Socket, id: number): Promise<void>;
+    handlePublicRooms(): Promise<void>;
+    handleGetUsers(client: Socket, id: number): Promise<void>;
+    handleGetAdmins(client: Socket, id: number): Promise<void>;
+    handleGetAllMessages(client: Socket, id: number): Promise<void>;
+    handeUpdstePassword(updatePasswordDto: UpdatePasswordDto): Promise<void>;
+    add(client: Socket, blockedUserDto: BlockedUserDto): Promise<void>;
+    remove(client: Socket, blockedUserDto: BlockedUserDto): Promise<void>;
+    findAll(client: Socket, userId: number): Promise<void>;
+    checkPassword(client: Socket, checkPasswordDto: CheckPasswordDto): Promise<void>;
+}

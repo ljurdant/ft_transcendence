@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int       @id
+  username     String    @unique
+  firstLogin   Boolean   @default(true)
+  tfa          Boolean   @default(false)
+  otpSecret    String    @default("")
+  stats        Stats?
+  matchHistory Match[]
+  achievements Int[]
+  friendIds    Int[]
+  rooms        Room[]    @relation("roomUsers")
+  adminRooms   Room[]    @relation("roomAdmins")
+  messages     Message[]
+  blockedIds   Int[]
+  muted        MutedRoomtoUser[]
+}
+
+model Stats {
+  id        Int   @id @default(autoincrement())
+  victories Int   @default(0)
+  losses    Int   @default(0)
+  xp        Int   @default(0)
+  level     Float @default(1)
+  userId    Int   @unique
+  User      User  @relation(fields: [userId], references: [id])
+}
+
+model Match {
+  id       Int      @id @default(autoincrement())
+  date     DateTime @default(now())
+  players  User[]
+  ladder   Int
+  winnerId Int
+  score    Int[]
+}
+
+model MutedRoomtoUser {
+  id     Int @id @default(autoincrement())
+  roomId Int
+  room   Room @relation(fields: [roomId], references: [id])
+  userId Int
+  date DateTime 
+  user  User @relation(fields: [userId], references: [id])
+}
+
+model Room {
+  id         Int       @id @default(autoincrement())
+  name       String
+  messages   Message[]
+  ownerId    Int
+  users      User[]    @relation("roomUsers")
+  admins     User[]    @relation("roomAdmins")
+  visibility String
+  password   String
+  muted      MutedRoomtoUser[]
+}
+
+
+model Message {
+  id      Int    @id @default(autoincrement())
+  content String
+  userId  Int
+  roomId  Int
+  Room    Room   @relation(fields: [roomId], references: [id])
+  User    User   @relation(fields: [userId], references: [id])
+}

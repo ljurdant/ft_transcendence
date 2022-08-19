@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.casino_map = exports.city_map = exports.original_map = exports.RIGHT_BOUND = exports.LEFT_BOUND = exports.BOT_BOUND = exports.TOP_BOUND = exports.PLAYER_SPEED = exports.PONG_ACCELERATION_ACUTE_ANGLE = exports.PONG_ACCELERATION = exports.PONG_MAX_SPEED = exports.PONG_BASE_SPEED = exports.PONG_DIAMETER = exports.DIAGONAL = exports.MAP_HEIGHT = exports.MAP_WIDTH = exports.PLAYER_HEIGHT = exports.PLAYER_WIDTH = void 0;
+const GameMap_1 = require("./GameMap");
+exports.PLAYER_WIDTH = 15;
+exports.PLAYER_HEIGHT = 80;
+exports.MAP_WIDTH = 1200;
+exports.MAP_HEIGHT = 750;
+exports.DIAGONAL = Math.sqrt(Math.pow(exports.MAP_WIDTH, 2) + Math.pow(exports.MAP_HEIGHT, 2));
+exports.PONG_DIAMETER = 12;
+exports.PONG_BASE_SPEED = exports.DIAGONAL / 150;
+exports.PONG_MAX_SPEED = exports.PONG_BASE_SPEED * 2;
+exports.PONG_ACCELERATION = exports.PONG_BASE_SPEED / 2800;
+exports.PONG_ACCELERATION_ACUTE_ANGLE = exports.PONG_BASE_SPEED / 28;
+exports.PLAYER_SPEED = exports.DIAGONAL / 125;
+exports.TOP_BOUND = 10;
+exports.BOT_BOUND = exports.MAP_HEIGHT - 10;
+exports.LEFT_BOUND = 0;
+exports.RIGHT_BOUND = exports.MAP_WIDTH;
+exports.original_map = new GameMap_1.GameMap(1, exports.MAP_WIDTH, exports.MAP_HEIGHT);
+exports.city_map = new GameMap_1.GameMap(2, exports.MAP_WIDTH, exports.MAP_HEIGHT);
+exports.casino_map = new GameMap_1.GameMap(3, exports.MAP_WIDTH, exports.MAP_HEIGHT);
+//# sourceMappingURL=Consts.js.map
